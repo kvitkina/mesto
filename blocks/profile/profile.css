@@ -3,6 +3,7 @@
 @import url('./__description/profile__description.css');
 @import url('./__edit-button/profile__edit-button.css');
 @import url('./__name/profile__name.css');
+@import url('./__info/profile__info.css');
 
 
 .profile {
@@ -10,6 +11,9 @@
   width: 100%;
   margin: 0 auto 50px;
   color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 
