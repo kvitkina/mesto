@@ -14,6 +14,23 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
 }
 
+@media screen and (max-width: 900px) {
+  .profile {
+    max-width: 700px;
+    width: 100%;
+    padding: 0 19px;
+    box-sizing: border-box;
+}
+}
 
+@media screen and (max-width: 600px) {
+  .profile {
+    max-width: 282px;
+    width: 100%;
+    margin-bottom: 36px;
+   flex-direction: column;
+}
+}
