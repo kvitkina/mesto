@@ -1,4 +1,9 @@
 .profile__edit-button {
   cursor: pointer;
   align-self: center;
+  transition: all .3s;
+}
+
+.profile__edit-button:hover {
+  opacity: .6;
 }
