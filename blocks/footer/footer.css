@@ -1,0 +1,7 @@
+@import url('./__author/footer__author.css');
+
+.footer {
+ max-width: 882px;
+ width: 100%;
+ margin: 0 auto 60px;
+}
