@@ -2,6 +2,10 @@
   cursor: pointer;
   align-self: center;
   transition: all .3s;
+  border: 1px solid white;
+  background-color: black;
+  width: 24px;
+  height: 24px;
 }
 
 .profile__edit-button:hover {

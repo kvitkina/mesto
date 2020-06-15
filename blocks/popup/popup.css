@@ -5,7 +5,8 @@
 @import url('./__name/popup__name.css');
 @import url('./__title/popup__title.css');
 @import url('./__button/popup__button.css');
-
+@import url('./__form-container/popup__form-container.css');
+@import url('./__close-vector/popup__close-vector.css');
 
 .popup {
  background-color: rgba(0, 0, 0, .5);
@@ -14,7 +15,7 @@
  left: 0;
  width: 100%;
  height: 100%;
- display: flex;
+ display: none;
  justify-content: center;
  align-items: center;
 }
