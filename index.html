@@ -23,59 +23,29 @@
       <button class="profile__add-button"></button>
     </section>
 
-    <div class="elements">
-      <ul class="elements__list">
-        <li class="element">
-          <img src="./images/karachaevsk.jpg" class="element__image" alt="Карачаевск">
-          <div class="element__info">
-           <h3 class="element__title">Карачаевск</h3>
-           <button class="element__like"></button>
-          </div>
-        </li>
-        <li class="element">
-          <img src="./images/Elbrus.jpg" class="element__image" alt="Гора Эльбрус">
-          <div class="element__info">
-            <h3 class="element__title">Гора Эльбрус</h3>
-            <button class="element__like"></button>
-        </div>
-        </li>
-        <li class="element">
-          <img src="./images/dombai.jpg" class="element__image" alt="Домбай">
-          <div class="element__info">
-            <h3 class="element__title">Домбай</h3>
-            <button class="element__like"></button>
-        </div>
-        </li>
-        <li class="element">
-          <img src="./images/karachaevsk.jpg" class="element__image" alt="Карачаевск">
-          <div class="element__info">
-            <h3 class="element__title">Карачаевск</h3>
-            <button class="element__like"></button>
-        </div>
-        </li>
-        <li class="element">
-          <img src="./images/kirill-pershin-1556355-unsplash.jpg" class="element__image" alt="Домбай">
-          <div class="element__info">
-            <h3 class="element__title">Домбай</h3>
-            <button class="element__like"></button>
-        </div>
-        </li>
-        <li class="element">
-          <img src="./images/karachaevsk.jpg" class="element__image" alt="Карачаево-Черкессия">
-          <div class="element__info">
-            <h3 class="element__title">Карачаево-Черкессия</h3>
-            <button class="element__like"></button>
-        </div>
-        </li>
-      </ul>
-    </div>
+
+      <div class="elements">
+        <ul class="elements__list">
+          <template class="elements__template">
+            <li class="element">
+              <img src="" class="element__image" alt="">
+              <div class="element__trash"></div>
+              <div class="element__info">
+                <h3 class="element__title"></h3>
+                <button class="element__like"></button>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
+
   </main>
 
   <footer class="footer">
     <h4 class="footer__author">&copy; 2020 Mesto Russia</h4>
   </footer>
 
-  <section class="popup">
+  <section class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="popup__close"></button>
       <form class="popup__form-container">
@@ -88,6 +58,29 @@
       </form>
     </div>
   </section>
+
+  <section class="popup popup_new-place">
+    <div class="popup__container popup__container_theme_place">
+      <button class="popup__close"></button>
+      <form class="popup__form-container">
+        <h2 class="popup__title">Новое место</h2>
+        <fieldset class="popup__form">
+          <input type="text" class="popup__name popup__name_theme_place" placeholder="Название">
+          <input type="url" class="popup__job popup__job_theme_place" placeholder="Ссылка на картинку">
+          <input type="submit" class="popup__button" value="Создать">
+        </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup popup_photo-zoom">
+    <div class="popup__container">
+      <img src="" class="popup__image" alt="">
+      <p class="popup__name"></p>
+      <button class="popup__close"></button>
+    </div>
+  </section>
+
   <script src='./scripts/index.js'></script>
 </body>
 </html>
