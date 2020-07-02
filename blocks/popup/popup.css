@@ -5,6 +5,18 @@
 @import url('./__name/popup__name.css');
 @import url('./__title/popup__title.css');
 @import url('./__button/popup__button.css');
+@import url('./__container-place/popup__container-place.css');
+@import url('./__place/popup__place.css');
+@import url('./__image/popup__image.css');
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 .popup {
  background-color: rgba(0, 0, 0, .5);
@@ -16,4 +28,5 @@
  display: none;
  justify-content: center;
  align-items: center;
+ animation: fade-out .4s;
 }
