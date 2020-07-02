@@ -46,6 +46,9 @@ const popupCloseProfile = popupEditProfile.querySelector ('.popup__close')
 const popupCloseNewPlace = popupNewPlace.querySelector ('.popup__close')
 const popupClosePhotoZoom = popupPhotoZoom.querySelector ('.popup__close')
 
+const popupPhotoContainer = popupPhotoZoom.querySelector('.popup__container')
+
+
 //функция для попапа "редактировать профиль"
 const popupToggle = function() {
   if (!popupEditProfile.classList.contains('popup_opened')) {
@@ -63,7 +66,7 @@ popupCloseProfile.addEventListener ('click', function () {
 })
 
 //функция для попапов "добавить" и "зум фото"
-const popupsToggle = function (popup) {
+function popupsToggle (popup) {
   popup.classList.toggle('popup_opened')
 }
 popupAddButton.addEventListener ('click', function () {
@@ -82,23 +85,55 @@ popupClosePhotoZoom.addEventListener ('click', function () {
   popupsToggle(popupPhotoZoom)
 })
 
+
 //Функция вывода массива на страницу
+
 const elementsList = document.querySelector('.elements__list')
 const elementsTemplate = document.querySelector('.elements__template')
+const elementTitle = elementsList.querySelector('.element__title')
+const popupImage = popupPhotoZoom.querySelector ('.popup__image')
+const popupName = popupPhotoZoom.querySelector ('.popup__place')
 
 function addElements (item) {
   const element = elementsTemplate.content.cloneNode(true)
   element.querySelector('.element__title').textContent = item.name
   element.querySelector('.element__image').src = item.link
+  element.querySelector('.element__image').addEventListener('click', () => photoZoomPopup(item))
+
   element.querySelector('.element__trash').addEventListener('click', deleteElement)
   element.querySelector('.element__like').addEventListener('click', likeElement)
   elementsList.prepend(element)
 }
 
+initialCards.forEach (function (item) {
+  addElements(item)
+})
+
+//функция открытия попапа с фоткой
+function photoZoomPopup (item) {
+
+  const image = item.link
+  const place = item.name
+
+  popupImage.src = image
+  popupName.textContent = place
+
+  popupsToggle (popupPhotoZoom)
+  }
 
 
+// Удалить элемент
+function deleteElement (evt) {
+  const element = evt.target.closest('.element')
+  element.remove()
+}
+// Поставить лайк
+function likeElement (evt) {
+  const like = evt.target.closest('.element__like')
+  like.classList.toggle('element__like_theme_black')
+}
 
-//Обработчик "добавления"
+//Обработчик "добавления" карточки
 
 const placeNameInput = popupNewPlace.querySelector('.popup__name_theme_place')
 const placeLinkInput = popupNewPlace.querySelector('.popup__job_theme_place')
@@ -120,27 +155,6 @@ function handlerAddElementSubmit(evt) {
   popupsToggle(popupNewPlace)
 }
 placeFormElement.addEventListener('submit', handlerAddElementSubmit);
-
-
-
-
-
-
-// Удалить элемент
-function deleteElement (evt) {
-  const element = evt.target.closest('.element')
-  element.remove()
-}
-// Поставить лайк
-function likeElement (evt) {
-  const like = evt.target.closest('.element__like')
-  like.classList.toggle('element__like_theme_black')
-}
-
-//перебор массива
-initialCards.forEach (function (item) {
-  addElements(item)
-})
 
 //функция сохранения профайла
 function formSubmitHandler (evt) {
@@ -167,5 +181,3 @@ function formSubmitHandler (evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
-
-
