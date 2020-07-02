@@ -73,10 +73,6 @@ popupAddButton.addEventListener ('click', function () {
   popupsToggle (popupNewPlace)
 })
 
-/*popupOpenPhotoZoom.addEventListener ('click', function () {
-  popupsToggle (popupPhotoZoom)
-})*/
-
 popupCloseNewPlace.addEventListener ('click', function () {
   popupsToggle(popupNewPlace)
 })
