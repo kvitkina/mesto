@@ -1,37 +1,10 @@
-const initialCards = [
-  {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const popup = document.querySelector('.popup')
 const popupSaveButton = popup.querySelector('.popup__button')
-let formElement = popup.querySelector('.popup__form-container')
-let nameInput = formElement.querySelector('.popup__name')
-let jobInput = formElement.querySelector('.popup__job')
-let profileName  = document.querySelector('.profile__name')
-let profileJob = document.querySelector('.profile__job')
+const formElement = popup.querySelector('.popup__form-container')
+const nameInput = formElement.querySelector('.popup__name')
+const jobInput = formElement.querySelector('.popup__job')
+const profileName  = document.querySelector('.profile__name')
+const profileJob = document.querySelector('.profile__job')
 
 
 const popupEditProfile = document.querySelector('.popup_edit-profile')
@@ -50,22 +23,23 @@ const popupPhotoContainer = popupPhotoZoom.querySelector('.popup__container')
 
 
 //функция для попапа "редактировать профиль"
-const popupToggle = function() {
+
+const openProfilePopup = function() {
   if (!popupEditProfile.classList.contains('popup_opened')) {
       nameInput.value = profileName.textContent
       jobInput.value = profileJob.textContent
     }
-    popupEditProfile.classList.toggle('popup_opened')
+    popupsToggle(popupEditProfile)
 }
 
 popupEditButton.addEventListener ('click', function () {
-  popupToggle (popupEditProfile)
+  openProfilePopup()
 })
 popupCloseProfile.addEventListener ('click', function () {
-  popupToggle(popupEditProfile)
+  popupsToggle(popupEditProfile)
 })
 
-//функция для попапов "добавить" и "зум фото"
+//функция открытия/зарытия попапов
 function popupsToggle (popup) {
   popup.classList.toggle('popup_opened')
 }
@@ -117,7 +91,6 @@ function photoZoomPopup (item) {
   popupsToggle (popupPhotoZoom)
   }
 
-
 // Удалить элемент
 function deleteElement (evt) {
   const element = evt.target.closest('.element')
@@ -130,7 +103,6 @@ function likeElement (evt) {
 }
 
 //Обработчик "добавления" карточки
-
 const placeNameInput = popupNewPlace.querySelector('.popup__name_theme_place')
 const placeLinkInput = popupNewPlace.querySelector('.popup__job_theme_place')
 const placeFormElement = popupNewPlace.querySelector('.popup__container_theme_place')
@@ -160,10 +132,6 @@ function formSubmitHandler (evt) {
     let nameInput = formElement.querySelector('.popup__name')
     let jobInput = formElement.querySelector('.popup__job')
 
-    // Получите значение полей из свойства value
-    console.log(nameInput.value)
-    console.log(jobInput.value)
-
     // Выберите элементы, куда должны быть вставлены значения полей
     let profileName  = document.querySelector('.profile__name')
     let profileJob = document.querySelector('.profile__job')
@@ -171,7 +139,7 @@ function formSubmitHandler (evt) {
     // Вставьте новые значения с помощью textContent
     profileName.textContent = nameInput.value
     profileJob.textContent = jobInput.value
-    popupToggle()
+    popupsToggle(popupEditProfile)
 }
 
 // Прикрепляем обработчик к форме:
