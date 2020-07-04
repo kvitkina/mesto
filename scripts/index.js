@@ -20,6 +20,9 @@ const popupCloseNewPlace = popupNewPlace.querySelector ('.popup__close')
 const popupClosePhotoZoom = popupPhotoZoom.querySelector ('.popup__close')
 
 const popupPhotoContainer = popupPhotoZoom.querySelector('.popup__container')
+const placeNameInput = popupNewPlace.querySelector('.popup__name_theme_place')
+const placeLinkInput = popupNewPlace.querySelector('.popup__job_theme_place')
+const placeFormElement = popupNewPlace.querySelector('.popup__container_theme_place')
 
 
 //функция для попапа "редактировать профиль"
@@ -44,6 +47,8 @@ function popupsToggle (popup) {
   popup.classList.toggle('popup_opened')
 }
 popupAddButton.addEventListener ('click', function () {
+  placeNameInput.value = ''
+  placeLinkInput.value = ''
   popupsToggle (popupNewPlace)
 })
 
@@ -103,16 +108,12 @@ function likeElement (evt) {
 }
 
 //Обработчик "добавления" карточки
-const placeNameInput = popupNewPlace.querySelector('.popup__name_theme_place')
-const placeLinkInput = popupNewPlace.querySelector('.popup__job_theme_place')
-const placeFormElement = popupNewPlace.querySelector('.popup__container_theme_place')
-
 function handlerAddElementSubmit(evt) {
   evt.preventDefault();
 
   const name = placeNameInput.value
   const link = placeLinkInput.value
-  let item = {
+  const item = {
     name: name,
     link: link
   }
@@ -128,18 +129,10 @@ placeFormElement.addEventListener('submit', handlerAddElementSubmit);
 function formSubmitHandler (evt) {
     evt.preventDefault();
 
-    // Находим поля формы в DOM
-    let nameInput = formElement.querySelector('.popup__name')
-    let jobInput = formElement.querySelector('.popup__job')
-
-    // Выберите элементы, куда должны быть вставлены значения полей
-    let profileName  = document.querySelector('.profile__name')
-    let profileJob = document.querySelector('.profile__job')
-
-    // Вставьте новые значения с помощью textContent
-    profileName.textContent = nameInput.value
-    profileJob.textContent = jobInput.value
-    popupsToggle(popupEditProfile)
+// Вставьте новые значения с помощью textContent
+  profileName.textContent = nameInput.value
+  profileJob.textContent = jobInput.value
+  popupsToggle(popupEditProfile)
 }
 
 // Прикрепляем обработчик к форме:
