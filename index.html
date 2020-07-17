@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+d<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -48,11 +48,17 @@
   <section class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="popup__close"></button>
-      <form class="popup__form-container" name="popup-profile">
+      <form class="popup__form-container" name="popup-profile" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
         <fieldset class="popup__form">
-          <input type="text" name="name" class="popup__name" value="Жак-Ив Кусто">
-          <input type="text" name="job" class="popup__job" value="Исследователь океана">
+          <div class="popup__input-container">
+            <input type="text" name="name" class="popup__name popup__input" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
+            <span class="popup__input-error" id="name-error"></span>
+          </div>
+          <div class="popup__input-container">
+            <input type="text" name="job" class="popup__job popup__input" value="Исследователь океана"required minlength="2" maxlength="200">
+            <span class="popup__input-error" id="job-error"></span>
+          </div>
           <input type="submit" class="popup__button" value="Сохранить">
         </fieldset>
       </form>
@@ -62,12 +68,19 @@
   <section class="popup popup_new-place">
     <div class="popup__container popup__container_theme_place">
       <button class="popup__close"></button>
-      <form class="popup__form-container" name="popup-place">
+      <form class="popup__form-container" name="popup-place" novalidate>
         <h2 class="popup__title">Новое место</h2>
         <fieldset class="popup__form">
-          <input type="text" name="place" class="popup__name popup__name_theme_place" placeholder="Название">
-          <input type="url" name="link" class="popup__job popup__job_theme_place" placeholder="Ссылка на картинку">
+          <div class="popup__input-container">
+            <input type="text" name="place" class="popup__name popup__name_theme_place popup__input" placeholder="Название" required minlength="1" maxlength="30">
+            <span class="popup__input-error" id="place-error"></span>
+          </div>
+          <div class="popup__input-container">
+            <input type="url" name="link" class="popup__job popup__job_theme_place popup__input" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error" id="link-error"></span>
+          </div>
           <input type="submit" class="popup__button" value="Создать">
+
         </fieldset>
       </form>
     </div>
@@ -83,6 +96,7 @@
 
   <script src='./scripts/array.js'></script>
   <script src='./scripts/index.js'></script>
+  <script src='./scripts/validate.js'></script>
 </body>
 </html>
 
