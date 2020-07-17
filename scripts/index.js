@@ -26,40 +26,55 @@ const placeFormElement = popupNewPlace.querySelector('.popup__container_theme_pl
 
 
 //функция для попапа "редактировать профиль"
-
 const openProfilePopup = function() {
   if (!popupEditProfile.classList.contains('popup_opened')) {
       nameInput.value = profileName.textContent
       jobInput.value = profileJob.textContent
     }
-    popupsToggle(popupEditProfile)
+    popupsOpen(popupEditProfile)
 }
 
 popupEditButton.addEventListener ('click', function () {
   openProfilePopup()
 })
 popupCloseProfile.addEventListener ('click', function () {
-  popupsToggle(popupEditProfile)
+  popupsClose(popupEditProfile)
 })
 
-//функция открытия/зарытия попапов
-function popupsToggle (popup) {
-  popup.classList.toggle('popup_opened')
+
+//функция открытия попапов
+function popupsOpen (popup) {
+  popup.classList.add('popup_opened')
+    document.addEventListener('keydown', escapeClose)
+  }
+
+//функция зарытия попапов
+function popupsClose (popup) {
+  popup.classList.remove('popup_opened')
+  document.removeEventListener('keydown', escapeClose)
 }
+
+
+//функция закрытия попапов нажатием на escape
+function escapeClose (evt){
+  if(evt.key === 'Escape') {
+    popupsClose(document.querySelector('.popup_opened'));
+  }
+}
+
 popupAddButton.addEventListener ('click', function () {
   placeNameInput.value = ''
   placeLinkInput.value = ''
-  popupsToggle (popupNewPlace)
+  popupsOpen (popupNewPlace)
 })
 
 popupCloseNewPlace.addEventListener ('click', function () {
-  popupsToggle(popupNewPlace)
+  popupsClose(popupNewPlace)
 })
 
 popupClosePhotoZoom.addEventListener ('click', function () {
-  popupsToggle(popupPhotoZoom)
+  popupsClose(popupPhotoZoom)
 })
-
 
 //Функция вывода массива на страницу
 
@@ -93,7 +108,7 @@ function photoZoomPopup (item) {
   popupImage.src = image
   popupName.textContent = place
 
-  popupsToggle (popupPhotoZoom)
+  popupsOpen (popupPhotoZoom)
   }
 
 // Удалить элемент
@@ -121,7 +136,7 @@ function handlerAddElementSubmit(evt) {
   placeLinkInput.value = ''
   addElements(item)
 
-  popupsToggle(popupNewPlace)
+  popupsClose(popupNewPlace)
 }
 placeFormElement.addEventListener('submit', handlerAddElementSubmit);
 
@@ -132,9 +147,24 @@ function formSubmitHandler (evt) {
 // Вставьте новые значения с помощью textContent
   profileName.textContent = nameInput.value
   profileJob.textContent = jobInput.value
-  popupsToggle(popupEditProfile)
+  popupsOpen(popupEditProfile)
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', formSubmitHandler)
+
+//функция закрытия попапов на оверлей
+
+function overlayClose() {
+  const popupList = document.querySelectorAll('.popup')
+  popupList.forEach (function (popup) {
+    popup.addEventListener ('click', function(evt) {
+      if(evt.target !== evt.currentTarget) {return}
+      popupsClose(popup)
+    })
+  })
+}
+overlayClose()
+
+
