@@ -10,7 +10,7 @@ validationObject = ({
 //фукнция добавляет класс ошибки в поле
 function showError (input, errorMessage, {errorClass, inputErrorClass, ...rest}) {
   const inputName = input.getAttribute('name')
-  const errorElement = document.getElementById(`${inputName}-error`)
+  const errorElement = document.getElementById(`${inputName}-error`) // насколько это критично? так как при поиске элементов от формы, возникают ошибки в консоли. А formSelector уже деструктурирован
 
   input.classList.add(inputErrorClass)
   errorElement.classList.add(errorClass)
@@ -27,16 +27,15 @@ function hideError (input, {errorClass, inputErrorClass, ...rest}){
   errorElement.textContent = '';
  }
 
-//функция меняет цвет и активность кнопки
+//функция меняет цвет и активность кнопки в зависимости от валидности полей
 function toggleButtonState (form, inputList, {submitButtonSelector, inactiveButtonClass}) {
   const submitButtonActive = form.querySelector(submitButtonSelector)
-
   if (hasInvalidInput(inputList)) {
     submitButtonActive.classList.add(inactiveButtonClass)
     submitButtonActive.disabled = true
   } else {
-  submitButtonActive.classList.remove(inactiveButtonClass)
-  submitButtonActive.disabled = false
+    submitButtonActive.classList.remove(inactiveButtonClass)
+    submitButtonActive.disabled = false
   }
 }
 
@@ -54,16 +53,16 @@ function checkInputValidity (input, rest) {
    hideError(input, rest)
  } else {
    const errorMessage = input.validationMessage
-   console.log(errorMessage)
    showError(input, errorMessage, rest)
  }
 }
+
 //функция наложения обработчиков на поля форм
 function setEventListeners (form, {inputSelector, ...rest}) {
-  const inputList = Array.from(document.querySelectorAll(inputSelector))
+  const inputList = Array.from(form.querySelectorAll(inputSelector))
   toggleButtonState(form, inputList, rest)
   inputList.forEach(input => {
-    input.addEventListener('input', function (evt) {
+    input.addEventListener('input', function () {
       checkInputValidity(input, rest)
       toggleButtonState(form, inputList, rest)
     })
@@ -80,7 +79,6 @@ function enableValidation ({formSelector, ...rest}) {
     setEventListeners(form, rest)
   })
 }
-
 enableValidation(validationObject)
 
 
