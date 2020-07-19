@@ -8,9 +8,9 @@ validationObject = ({
 })
 
 //фукнция добавляет класс ошибки в поле
-function showError (input, errorMessage, {errorClass, inputErrorClass, ...rest}) {
-  const inputName = input.getAttribute('name')
-  const errorElement = document.getElementById(`${inputName}-error`) // насколько это критично? так как при поиске элементов от формы, возникают ошибки в консоли. А formSelector уже деструктурирован
+function showError (form, input, errorMessage, {errorClass, inputErrorClass, ...rest}) {
+
+  const errorElement = form.querySelector(`#${input.id}-error`)
 
   input.classList.add(inputErrorClass)
   errorElement.classList.add(errorClass)
@@ -18,9 +18,9 @@ function showError (input, errorMessage, {errorClass, inputErrorClass, ...rest})
 }
 
 //фукнция убирает класс ошибки из поля
-function hideError (input, {errorClass, inputErrorClass, ...rest}){
-  const inputName = input.getAttribute('name')
-  const errorElement = document.getElementById(`${inputName}-error`)
+function hideError (form, input, {errorClass, inputErrorClass, ...rest}){
+
+  const errorElement = form.querySelector(`#${input.id}-error`)
 
   input.classList.remove(inputErrorClass)
   errorElement.classList.remove (errorClass)
@@ -31,12 +31,17 @@ function hideError (input, {errorClass, inputErrorClass, ...rest}){
 function toggleButtonState (form, inputList, {submitButtonSelector, inactiveButtonClass}) {
   const submitButtonActive = form.querySelector(submitButtonSelector)
   if (hasInvalidInput(inputList)) {
-    submitButtonActive.classList.add(inactiveButtonClass)
-    submitButtonActive.disabled = true
+    disableButton (submitButtonActive, {inactiveButtonClass})
   } else {
     submitButtonActive.classList.remove(inactiveButtonClass)
     submitButtonActive.disabled = false
   }
+}
+
+//функция блокирования кнопки
+function disableButton (submitButtonActive, {inactiveButtonClass}){
+  submitButtonActive.classList.add(inactiveButtonClass)
+  submitButtonActive.disabled = true
 }
 
 //функция проверяет есть ли хотя бы одно невалидное поле
@@ -47,13 +52,13 @@ function hasInvalidInput (inputList) {
 }
 
 //функция проверяет поля на валидность
-function checkInputValidity (input, rest) {
+function checkInputValidity (form, input, rest) {
   const inputIsValid = input.validity.valid
  if (inputIsValid) {
-   hideError(input, rest)
+   hideError(form, input, rest)
  } else {
    const errorMessage = input.validationMessage
-   showError(input, errorMessage, rest)
+   showError(form, input, errorMessage, rest)
  }
 }
 
@@ -63,7 +68,7 @@ function setEventListeners (form, {inputSelector, ...rest}) {
   toggleButtonState(form, inputList, rest)
   inputList.forEach(input => {
     input.addEventListener('input', function () {
-      checkInputValidity(input, rest)
+      checkInputValidity(form, input, rest)
       toggleButtonState(form, inputList, rest)
     })
   })
