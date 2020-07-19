@@ -1,6 +1,6 @@
 const popup = document.querySelector('.popup')
 const formElement = popup.querySelector('.popup__form-container')
-const submitButtonActive = popup.querySelector('.popup__button')
+
 const nameInput = formElement.querySelector('.popup__name')
 const jobInput = formElement.querySelector('.popup__job')
 const profileName  = document.querySelector('.profile__name')
@@ -56,9 +56,17 @@ function escapeClose (evt){
   }
 }
 
+//функция блокирования кнопки
+function disableButton () {
+  const submitButtonActive = document.querySelector('.popup__button')
+  submitButtonActive.classList.add('popup__button_inactive')
+  submitButtonActive.disabled = true
+}
+
 popupAddButton.addEventListener ('click', function () {
   placeNameInput.value = ''
   placeLinkInput.value = ''
+  disableButton ()
   popupsOpen (popupNewPlace)
 })
 

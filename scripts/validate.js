@@ -9,9 +9,7 @@ validationObject = ({
 
 //фукнция добавляет класс ошибки в поле
 function showError (form, input, errorMessage, {errorClass, inputErrorClass, ...rest}) {
-
   const errorElement = form.querySelector(`#${input.id}-error`)
-
   input.classList.add(inputErrorClass)
   errorElement.classList.add(errorClass)
   errorElement.textContent = errorMessage
@@ -19,9 +17,7 @@ function showError (form, input, errorMessage, {errorClass, inputErrorClass, ...
 
 //фукнция убирает класс ошибки из поля
 function hideError (form, input, {errorClass, inputErrorClass, ...rest}){
-
   const errorElement = form.querySelector(`#${input.id}-error`)
-
   input.classList.remove(inputErrorClass)
   errorElement.classList.remove (errorClass)
   errorElement.textContent = '';
@@ -31,18 +27,14 @@ function hideError (form, input, {errorClass, inputErrorClass, ...rest}){
 function toggleButtonState (form, inputList, {submitButtonSelector, inactiveButtonClass}) {
   const submitButtonActive = form.querySelector(submitButtonSelector)
   if (hasInvalidInput(inputList)) {
-    disableButton (submitButtonActive, {inactiveButtonClass})
+    disableButton ()
   } else {
     submitButtonActive.classList.remove(inactiveButtonClass)
     submitButtonActive.disabled = false
   }
 }
 
-//функция блокирования кнопки
-function disableButton (submitButtonActive, {inactiveButtonClass}){
-  submitButtonActive.classList.add(inactiveButtonClass)
-  submitButtonActive.disabled = true
-}
+
 
 //функция проверяет есть ли хотя бы одно невалидное поле
 function hasInvalidInput (inputList) {
