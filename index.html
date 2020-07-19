@@ -52,11 +52,11 @@ d<!DOCTYPE html>
         <h2 class="popup__title">Редактировать профиль</h2>
         <fieldset class="popup__form">
           <div class="popup__input-container">
-            <input type="text" name="name" class="popup__name popup__input" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
+            <input type="text" id="name" name="name" class="popup__name popup__input" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
             <span class="popup__input-error" id="name-error"></span>
           </div>
           <div class="popup__input-container">
-            <input type="text" name="job" class="popup__job popup__input" value="Исследователь океана"required minlength="2" maxlength="200">
+            <input type="text" id="job" name="job" class="popup__job popup__input" value="Исследователь океана"required minlength="2" maxlength="200">
             <span class="popup__input-error" id="job-error"></span>
           </div>
           <input type="submit" class="popup__button" value="Сохранить">
@@ -72,11 +72,11 @@ d<!DOCTYPE html>
         <h2 class="popup__title">Новое место</h2>
         <fieldset class="popup__form">
           <div class="popup__input-container">
-            <input type="text" name="place" class="popup__name popup__name_theme_place popup__input" placeholder="Название" required minlength="1" maxlength="30">
+            <input type="text" id="place" name="place" class="popup__name popup__name_theme_place popup__input" placeholder="Название" required minlength="1" maxlength="30">
             <span class="popup__input-error" id="place-error"></span>
           </div>
           <div class="popup__input-container">
-            <input type="url" name="link" class="popup__job popup__job_theme_place popup__input" placeholder="Ссылка на картинку" required>
+            <input type="url" id="link" name="link" class="popup__job popup__job_theme_place popup__input" placeholder="Ссылка на картинку" required>
             <span class="popup__input-error" id="link-error"></span>
           </div>
           <input type="submit" class="popup__button" value="Создать">
