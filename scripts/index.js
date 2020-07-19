@@ -1,6 +1,6 @@
 const popup = document.querySelector('.popup')
 const formElement = popup.querySelector('.popup__form-container')
-const submitButtonActive = popup.querySelector('.popup__button')
+
 const nameInput = formElement.querySelector('.popup__name')
 const jobInput = formElement.querySelector('.popup__job')
 const profileName  = document.querySelector('.profile__name')
@@ -56,9 +56,17 @@ function escapeClose (evt){
   }
 }
 
+const buttonCreate = placeFormElement.querySelector('.popup__button')
+
+function disableButton(buttonCreate){
+  buttonCreate.disabled = true
+  buttonCreate.classList.add('popup__button_inactive')}
+
+
 popupAddButton.addEventListener ('click', function () {
   placeNameInput.value = ''
   placeLinkInput.value = ''
+  disableButton(buttonCreate)
   popupsOpen (popupNewPlace)
 })
 
@@ -88,6 +96,7 @@ const popupName = popupPhotoZoom.querySelector ('.popup__place')
 
   return element
 }
+
 //функция выводит карточки на страницу
 function renderCard (item, elementsList){
   const element = addElements(item)
@@ -139,7 +148,6 @@ function handlerAddElementSubmit(evt) {
   addElements(item)
   renderCard (item, elementsList)
   popupsClose(popupNewPlace)
-
 }
 
 placeFormElement.addEventListener('submit', handlerAddElementSubmit);
