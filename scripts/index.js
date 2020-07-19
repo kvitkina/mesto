@@ -56,17 +56,17 @@ function escapeClose (evt){
   }
 }
 
-//функция блокирования кнопки
-function disableButton () {
-  const submitButtonActive = document.querySelector('.popup__button')
-  submitButtonActive.classList.add('popup__button_inactive')
-  submitButtonActive.disabled = true
-}
+const buttonCreate = placeFormElement.querySelector('.popup__button')
+
+function disableButton(buttonCreate){
+  buttonCreate.disabled = true
+  buttonCreate.classList.add('popup__button_inactive')}
+
 
 popupAddButton.addEventListener ('click', function () {
   placeNameInput.value = ''
   placeLinkInput.value = ''
-  disableButton ()
+  disableButton(buttonCreate)
   popupsOpen (popupNewPlace)
 })
 
@@ -96,6 +96,7 @@ const popupName = popupPhotoZoom.querySelector ('.popup__place')
 
   return element
 }
+
 //функция выводит карточки на страницу
 function renderCard (item, elementsList){
   const element = addElements(item)
@@ -147,7 +148,6 @@ function handlerAddElementSubmit(evt) {
   addElements(item)
   renderCard (item, elementsList)
   popupsClose(popupNewPlace)
-
 }
 
 placeFormElement.addEventListener('submit', handlerAddElementSubmit);

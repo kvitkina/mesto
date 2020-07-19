@@ -23,18 +23,17 @@ function hideError (form, input, {errorClass, inputErrorClass, ...rest}){
   errorElement.textContent = '';
  }
 
-//функция меняет цвет и активность кнопки в зависимости от валидности полей
+ //функция меняет цвет и активность кнопки в зависимости от валидности полей
 function toggleButtonState (form, inputList, {submitButtonSelector, inactiveButtonClass}) {
   const submitButtonActive = form.querySelector(submitButtonSelector)
   if (hasInvalidInput(inputList)) {
-    disableButton ()
+    submitButtonActive.classList.add(inactiveButtonClass)
+    submitButtonActive.disabled = true
   } else {
     submitButtonActive.classList.remove(inactiveButtonClass)
     submitButtonActive.disabled = false
   }
 }
-
-
 
 //функция проверяет есть ли хотя бы одно невалидное поле
 function hasInvalidInput (inputList) {
