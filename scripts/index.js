@@ -122,3 +122,5 @@ formProfileValitation.enableValidation()
 const formPlace = popupNewPlace.querySelector('.popup__form-container')
 const formPlaceValitation = new FormValidator (validationObject, formPlace)
 formPlaceValitation.enableValidation()
+
+
