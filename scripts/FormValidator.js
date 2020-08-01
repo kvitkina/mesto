@@ -10,70 +10,70 @@ class FormValidator {
     this._form = form
   }
 
-//метод добавляет класс ошибки в поле
-_showError (input, errorMessage) {
-  const errorElement = this._form.querySelector(`#${input.id}-error`)
-  input.classList.add(this._inputErrorClass)
-  errorElement.classList.add(this._errorClass)
-  errorElement.textContent = errorMessage
-}
-
-//метод убирает класс ошибки из поля
-_hideError (input) {
-  const errorElement = this._form.querySelector(`#${input.id}-error`)
-  input.classList.remove(this._inputErrorClass)
-  errorElement.classList.remove (this._errorClass)
-  errorElement.textContent = '';
- }
-
- //метод меняет цвет и активность кнопки в зависимости от валидности полей
-_toggleButtonState () {
-  const submitButtonActive = this._form.querySelector(this._submitButtonSelector)
-  if (this._hasInvalidInput(this._inputList)) {
-    submitButtonActive.classList.add(this._inactiveButtonClass)
-    submitButtonActive.disabled = true
-  } else {
-    submitButtonActive.classList.remove(this._inactiveButtonClass)
-    submitButtonActive.disabled = false
+  //метод добавляет класс ошибки в поле
+  _showError (input, errorMessage) {
+    const errorElement = this._form.querySelector(`#${input.id}-error`)
+    input.classList.add(this._inputErrorClass)
+    errorElement.classList.add(this._errorClass)
+    errorElement.textContent = errorMessage
   }
-}
 
-//метод проверяет есть ли хотя бы одно невалидное поле
-_hasInvalidInput () {
-  return this._inputList.some((input) => {
-  return !input.validity.valid;
-  })
-}
+  //метод убирает класс ошибки из поля
+  _hideError (input) {
+    const errorElement = this._form.querySelector(`#${input.id}-error`)
+    input.classList.remove(this._inputErrorClass)
+    errorElement.classList.remove (this._errorClass)
+    errorElement.textContent = '';
+  }
 
-//метод проверяет поля на валидность
-_checkInputValidity (input) {
-  const inputIsValid = input.validity.valid
- if (inputIsValid) {
-   this._hideError(input)
- } else {
-   const errorMessage = input.validationMessage
-   this._showError(input, errorMessage)
- }
-}
+  //метод меняет цвет и активность кнопки в зависимости от валидности полей
+  _toggleButtonState () {
+    const submitButtonActive = this._form.querySelector(this._submitButtonSelector)
+    if (this._hasInvalidInput(this._inputList)) {
+      submitButtonActive.classList.add(this._inactiveButtonClass)
+      submitButtonActive.disabled = true
+    } else {
+      submitButtonActive.classList.remove(this._inactiveButtonClass)
+      submitButtonActive.disabled = false
+    }
+  }
 
-//метод наложения обработчиков на поля форм
-_setEventListeners () {
-  this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector))
-  this._toggleButtonState()
-  this._inputList.forEach(input => {
-    input.addEventListener('input', () => {
-      this._checkInputValidity(input)
-      this._toggleButtonState()
+  //метод проверяет есть ли хотя бы одно невалидное поле
+  _hasInvalidInput () {
+    return this._inputList.some((input) => {
+    return !input.validity.valid;
     })
-  })
-}
-
-//метод запукает процесс валидации
-enableValidation () {
-  this._form.addEventListener('submit', (evt) => {
-    evt.preventDefault()
-  })
-    this._setEventListeners()
   }
 
-}
+  //метод проверяет поля на валидность
+  _checkInputValidity (input) {
+    const inputIsValid = input.validity.valid
+    if (inputIsValid) {
+      this._hideError(input)
+    } else {
+      const errorMessage = input.validationMessage
+      this._showError(input, errorMessage)
+    }
+  }
+
+  //метод наложения обработчиков на поля форм
+  _setEventListeners () {
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector))
+    this._toggleButtonState()
+    this._inputList.forEach(input => {
+      input.addEventListener('input', () => {
+        this._checkInputValidity(input)
+        this._toggleButtonState()
+      })
+    })
+  }
+
+  //метод запукает процесс валидации
+  enableValidation () {
+    this._form.addEventListener('submit', (evt) => {
+      evt.preventDefault()
+    })
+      this._setEventListeners()
+    }
+
+  }

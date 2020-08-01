@@ -29,29 +29,28 @@ export class Card {
   //функция открытия попапа с фоткой
   _photoZoomPopup () {
 
-  const image = this._link
-  const place = this._name
+    const image = this._link
+    const place = this._name
 
-  popupImage.src = image
-  popupName.textContent = place
+    popupImage.src = image
+    popupName.textContent = place
 
-  popupsOpen (popupPhotoZoom)
+    popupsOpen (popupPhotoZoom)
   }
 
-    // Удалить элемент
-    _deleteElement () {
-      this._element.remove()
+  // Удалить элемент
+  _deleteElement () {
+    this._element.remove()
   }
-    // Поставить лайк
-    _likeElement (evt) {
-      const like = evt.target.closest('.element__like')
-      like.classList.toggle('element__like_theme_black')
+  // Поставить лайк
+  _likeElement (evt) {
+    const like = evt.target.closest('.element__like')
+    like.classList.toggle('element__like_theme_black')
   }
 
   _setEventListeners () {
     this._element.querySelector('.element__image').addEventListener('click', () => this._photoZoomPopup())
     this._element.querySelector('.element__trash').addEventListener('click', this._deleteElement)
     this._element.querySelector('.element__like').addEventListener('click', this._likeElement)
-
   }
 }
