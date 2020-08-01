@@ -34,7 +34,6 @@ popupCloseProfile.addEventListener ('click', function () {
   popupsClose(popupEditProfile)
 })
 
-
 //функция неактивной кнопки
 function disableButton(buttonCreate){
   buttonCreate.disabled = true
