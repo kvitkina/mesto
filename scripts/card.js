@@ -9,12 +9,12 @@ export class Card {
     this._elementsTemplate = elementsTemplate
   }
 
-  _getTemplate() {
+  _getTemplate () {
     const cardElement = document.querySelector(this._elementsTemplate).content.querySelector('.element').cloneNode(true)
     return cardElement
   }
 
-  generateCard() {
+  generateCard () {
     this._element = this._getTemplate()
     this._setEventListeners()
 
@@ -27,7 +27,7 @@ export class Card {
   }
 
   //функция открытия попапа с фоткой
-  _photoZoomPopup (){
+  _photoZoomPopup () {
 
   const image = this._link
   const place = this._name
@@ -39,7 +39,7 @@ export class Card {
   }
 
     // Удалить элемент
-    _deleteElement = (evt) => {
+    _deleteElement () {
       this._element.remove()
   }
     // Поставить лайк
