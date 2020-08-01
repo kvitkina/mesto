@@ -19,7 +19,7 @@ _showError (input, errorMessage) {
 }
 
 //метод убирает класс ошибки из поля
-_hideError (input){
+_hideError (input) {
   const errorElement = this._form.querySelector(`#${input.id}-error`)
   input.classList.remove(this._inputErrorClass)
   errorElement.classList.remove (this._errorClass)
@@ -27,7 +27,7 @@ _hideError (input){
  }
 
  //метод меняет цвет и активность кнопки в зависимости от валидности полей
-_toggleButtonState = () => {
+_toggleButtonState () {
   const submitButtonActive = this._form.querySelector(this._submitButtonSelector)
   if (this._hasInvalidInput(this._inputList)) {
     submitButtonActive.classList.add(this._inactiveButtonClass)
@@ -46,7 +46,7 @@ _hasInvalidInput () {
 }
 
 //метод проверяет поля на валидность
-_checkInputValidity = (input) => {
+_checkInputValidity (input) {
   const inputIsValid = input.validity.valid
  if (inputIsValid) {
    this._hideError(input)
@@ -57,7 +57,7 @@ _checkInputValidity = (input) => {
 }
 
 //метод наложения обработчиков на поля форм
-_setEventListeners = () => {
+_setEventListeners () {
   this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector))
   this._toggleButtonState()
   this._inputList.forEach(input => {

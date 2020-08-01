@@ -115,12 +115,12 @@ overlayListeners()
 
 // создание экземпляра класса для валидации формы "редактировать профиль"
 const formProfile = popupEditProfile.querySelector('.popup__form-container')
-const formProfileValitation = new FormValidator (validationObject, formProfile)
-formProfileValitation.enableValidation()
+const formProfileValidation = new FormValidator (validationObject, formProfile)
+formProfileValidation.enableValidation()
 
 // создание экземпляра класса для валидации формы "новое место"
 const formPlace = popupNewPlace.querySelector('.popup__form-container')
-const formPlaceValitation = new FormValidator (validationObject, formPlace)
-formPlaceValitation.enableValidation()
+const formPlaceValidation = new FormValidator (validationObject, formPlace)
+formPlaceValidation.enableValidation()
 
 
