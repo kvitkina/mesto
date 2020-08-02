@@ -1,5 +1,7 @@
 export {FormValidator}
 
+import { buttonCreate } from './constants.js'
+
 class FormValidator {
   constructor (validationObject, form) {
     this._inputSelector = validationObject.inputSelector
@@ -26,12 +28,18 @@ class FormValidator {
     errorElement.textContent = '';
   }
 
+  //метод неактивной кнопки
+  _disableButton () {
+    const submitButtonActive = this._form.querySelector(this._submitButtonSelector)
+    submitButtonActive.classList.add(this._inactiveButtonClass)
+    submitButtonActive.disabled = true
+}
+
   //метод меняет цвет и активность кнопки в зависимости от валидности полей
   _toggleButtonState () {
     const submitButtonActive = this._form.querySelector(this._submitButtonSelector)
     if (this._hasInvalidInput(this._inputList)) {
-      submitButtonActive.classList.add(this._inactiveButtonClass)
-      submitButtonActive.disabled = true
+      this._disableButton()
     } else {
       submitButtonActive.classList.remove(this._inactiveButtonClass)
       submitButtonActive.disabled = false

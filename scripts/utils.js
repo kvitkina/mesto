@@ -1,20 +1,20 @@
-export {popupsOpen, popupsClose, escapeClose}
+export {openPopups, closePopups, closeByEscape}
 
 //функция открытия попапов
-function popupsOpen (popup) {
+function openPopups (popup) {
   popup.classList.add('popup_opened')
-    document.addEventListener('keydown', escapeClose)
+    document.addEventListener('keydown', closeByEscape)
   }
 
 //функция зарытия попапов
-function popupsClose (popup) {
+function closePopups (popup) {
   popup.classList.remove('popup_opened')
-  document.removeEventListener('keydown', escapeClose)
+  document.removeEventListener('keydown', closeByEscape)
 }
 
 //функция закрытия попапов нажатием на escape
-function escapeClose (evt){
+function closeByEscape (evt){
   if(evt.key === 'Escape') {
-    popupsClose(document.querySelector('.popup_opened'));
+    closePopups(document.querySelector('.popup_opened'));
   }
 }
