@@ -1,6 +1,6 @@
 export {popup, formElement, nameInput, jobInput, profileName, profileJob, popupEditProfile, popupNewPlace, popupPhotoZoom,
   popupEditButton, popupAddButton, popupCloseProfile, popupCloseNewPlace, popupClosePhotoZoom, placeNameInput, placeLinkInput,
-  placeFormElement, buttonCreate, elementsList, elementsTemplate, popupImage, popupName}
+  placeFormElement, buttonCreate, elementsList, elementsTemplate, popupImage, popupName,formPlace, formProfile}
 
 
 const popup = document.querySelector('.popup')
@@ -32,3 +32,6 @@ const elementsList = document.querySelector('.elements__list')
 const elementsTemplate = document.querySelector('.elements__template')
 const popupImage = popupPhotoZoom.querySelector ('.popup__image')
 const popupName = popupPhotoZoom.querySelector ('.popup__place')
+
+const formPlace = popupNewPlace.querySelector('.popup__form-container')
+const formProfile = popupEditProfile.querySelector('.popup__form-container')
