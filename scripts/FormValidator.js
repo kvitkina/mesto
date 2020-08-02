@@ -29,7 +29,7 @@ class FormValidator {
   }
 
   //метод неактивной кнопки
-  _disableButton () {
+  disableButton () {
     const submitButtonActive = this._form.querySelector(this._submitButtonSelector)
     submitButtonActive.classList.add(this._inactiveButtonClass)
     submitButtonActive.disabled = true
