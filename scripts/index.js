@@ -88,7 +88,7 @@ popupClosePhotoZoom.addEventListener('click', function () {
 popupAddButton.addEventListener('click', function () {
   placeNameInput.value = ''
   placeLinkInput.value = ''
-  formPlaceValidation._disableButton()
+  formPlaceValidation.disableButton()
   openPopups(popupNewPlace)
 })
 
