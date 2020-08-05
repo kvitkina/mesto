@@ -38,19 +38,19 @@ export class Card {
   }
 
   // Удалить элемент
-  _deleteElement = () => {
+  _deleteElement() {
     this._element.remove()
   }
 
   // Поставить лайк
-  _handleLikeButton (evt) {
-    const like = evt.target.closest('.element__like')
+  _handleLikeButton () {
+    const like = this._element.querySelector('.element__like')
     like.classList.toggle('element__like_theme_black')
   }
 
   _setEventListeners () {
     this._element.querySelector('.element__image').addEventListener('click', () => this._openPhotoZoomPopup())
-    this._element.querySelector('.element__trash').addEventListener('click', this._deleteElement)
-    this._element.querySelector('.element__like').addEventListener('click', this._handleLikeButton)
+    this._element.querySelector('.element__trash').addEventListener('click', () => this._deleteElement())
+    this._element.querySelector('.element__like').addEventListener('click', () => this._handleLikeButton())
   }
 }
