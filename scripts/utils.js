@@ -1,4 +1,4 @@
-export {openPopups, closePopups, closeByEscape}
+/*export {openPopups, closePopups, closeByEscape}
 
 //функция открытия попапов
 function openPopups (popup) {
@@ -15,6 +15,7 @@ function closePopups (popup) {
 //функция закрытия попапов нажатием на escape
 function closeByEscape (evt){
   if(evt.key === 'Escape') {
-    closePopups(document.querySelector('.popup_opened'));
+    closePopups(document.querySelector('.popup_opened'))
   }
 }
+*/
