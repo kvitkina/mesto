@@ -17,10 +17,14 @@ module.exports = {
           exclude: '/node_modules/' // исключает папку node_modules, файлы в ней обрабатывать не нужно
         },
          // добавили правило для обработки файлов
-        {
-          test: /\.(png|svg|jpg|gif|woff2|woff)$/, // регулярное выражение, которое ищет все файлы с такими расширениями
-          loader: 'file-loader' // при обработке этих файлов нужно использовать file-loader
-        },
+         {
+          test: /.(png|svg|jpg|gif)$/, // регулярное выражение, которое ищет все файлы с такими расширениями
+          loader: 'file-loader?name=./images/[name].[ext]' // при обработке этих файлов нужно использовать file-loader
+      },
+      {
+          test: /.(eot|ttf|woff|woff2)$/,
+          loader: 'file-loader?name=./vendor/[name].[ext]',
+      },
         // аналогично добавьте правило для работы с html
         {
           test: /\.html$/,

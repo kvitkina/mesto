@@ -1,7 +1,7 @@
 import {
   popup, formElement, nameInput, jobInput, profileName, profileJob, popupEditProfile, popupNewPlace, popupPhotoZoom,
   popupEditButton, popupAddButton, popupCloseProfile, popupCloseNewPlace, popupClosePhotoZoom, placeNameInput, placeLinkInput,
-  placeFormElement, buttonCreate, elementsList, formPlace, formProfile } from '../utils/constants.js'
+  placeFormElement, buttonCreate, elementsList, formPlace, formProfile, popupImage, popupName } from '../utils/constants.js'
 import { initialCards } from '../utils/arrayInitialCards.js'
 import { Card } from '../components/Сard.js'
 import { FormValidator } from '../components/FormValidator.js'
@@ -41,7 +41,7 @@ const cardList = new Section ({
 
   cardList.renderItems()
 
-  //создание экземпляра класса для попапа "новое место"
+//создание экземпляра класса для попапа "новое место"
 const newPlace = new PopupWithForm ('.popup_new-place', {
   handleFormSubmit: (data) => {
     const card = new Card({data, handleCardClick: () => {
@@ -76,7 +76,7 @@ popupEditButton.addEventListener('click', () => {
 })
 
 //создание экземпляра класса для попапа "зум фото"
-const popupWithImage = new PopupWithImage ('.popup_photo-zoom')
+const popupWithImage = new PopupWithImage ('.popup_photo-zoom', {popupImage, popupName})
 popupWithImage.setEventListeners()
 popupWithImage.close()
 
