@@ -1,7 +1,5 @@
 export {FormValidator}
 
-import { buttonCreate } from './constants.js'
-
 class FormValidator {
   constructor (validationObject, form) {
     this._inputSelector = validationObject.inputSelector
