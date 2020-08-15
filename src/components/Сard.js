@@ -18,6 +18,7 @@ export class Card {
 
     const popupOpenPhotoZoom = this._element.querySelector('.element__image')
     this._element.querySelector('.element__title').textContent = this._name
+
     popupOpenPhotoZoom.alt = this._alt
     popupOpenPhotoZoom.src = this._link
 
@@ -27,6 +28,7 @@ export class Card {
   // Удалить элемент
   _deleteElement() {
     this._element.remove()
+    this._element = null
   }
 
   // Поставить лайк
@@ -36,7 +38,7 @@ export class Card {
   }
 
   _setEventListeners () {
-    this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick())
+    this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick(this._name, this._link))
     this._element.querySelector('.element__trash').addEventListener('click', () => this._deleteElement())
     this._element.querySelector('.element__like').addEventListener('click', () => this._handleLikeButton())
   }
