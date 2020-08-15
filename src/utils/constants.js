@@ -2,7 +2,6 @@ export {popup, formElement, nameInput, jobInput, profileName, profileJob, popupE
   popupEditButton, popupAddButton, popupCloseProfile, popupCloseNewPlace, popupClosePhotoZoom, placeNameInput, placeLinkInput,
   placeFormElement, buttonCreate, elementsList, elementsTemplate, popupImage, popupName,formPlace, formProfile}
 
-
 const popup = document.querySelector('.popup')
 const formElement = popup.querySelector('.popup__form-container')
 

@@ -1,12 +1,10 @@
-import {openPopups} from './utils.js'
-import {popupPhotoZoom, popupImage, popupName} from './constants.js'
-
 export class Card {
-  constructor(data, elementsTemplate) {
+  constructor({data, handleCardClick}, elementsTemplate) {
     this._link = data.link
     this._name = data.name
     this._alt = data.alt
     this._elementsTemplate = elementsTemplate
+    this._handleCardClick = handleCardClick
   }
 
   _getTemplate () {
@@ -26,17 +24,6 @@ export class Card {
     return this._element
   }
 
-  //функция открытия попапа с фоткой
-  _openPhotoZoomPopup () {
-    const image = this._link
-    const place = this._name
-
-    popupImage.src = image
-    popupName.textContent = place
-
-    openPopups (popupPhotoZoom)
-  }
-
   // Удалить элемент
   _deleteElement() {
     this._element.remove()
@@ -49,7 +36,7 @@ export class Card {
   }
 
   _setEventListeners () {
-    this._element.querySelector('.element__image').addEventListener('click', () => this._openPhotoZoomPopup())
+    this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick())
     this._element.querySelector('.element__trash').addEventListener('click', () => this._deleteElement())
     this._element.querySelector('.element__like').addEventListener('click', () => this._handleLikeButton())
   }
