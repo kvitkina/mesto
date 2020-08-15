@@ -1,15 +1,15 @@
 import {
   popup, formElement, nameInput, jobInput, profileName, profileJob, popupEditProfile, popupNewPlace, popupPhotoZoom,
   popupEditButton, popupAddButton, popupCloseProfile, popupCloseNewPlace, popupClosePhotoZoom, placeNameInput, placeLinkInput,
-  placeFormElement, buttonCreate, elementsList, formPlace, formProfile } from './constants.js'
-import { initialCards } from './arrayInitialCards.js'
-import { Card } from './Сard.js'
-import { FormValidator } from './FormValidator.js'
-import { Section } from './Section.js'
-import { PopupWithImage } from './PopupWithImage.js'
-import {UserInfo} from './UserInfo.js'
-import { PopupWithForm } from './PopupWithForm.js'
-
+  placeFormElement, buttonCreate, elementsList, formPlace, formProfile } from '../utils/constants.js'
+import { initialCards } from '../utils/arrayInitialCards.js'
+import { Card } from '../components/Сard.js'
+import { FormValidator } from '../components/FormValidator.js'
+import { Section } from '../components/Section.js'
+import { PopupWithImage } from '../components/PopupWithImage.js'
+import { UserInfo } from '../components/UserInfo.js'
+import { PopupWithForm } from '../components/PopupWithForm.js'
+import './index.css'
 const validationObject = ({
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
