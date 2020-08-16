@@ -10,11 +10,10 @@ export class PopupWithImage extends Popup {
   open(data) {
     const image = data.link
     const place = data.name
-    const alt = data.alt
 
     this._popupImage.src = image
     this._popupName.textContent = place
-    this._popupImage.alt = alt
+    this._popupImage.alt = place
     super.open()
 
   }
