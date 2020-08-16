@@ -20,7 +20,6 @@ export class Card {
 
     popupOpenPhotoZoom.alt = this._name
     popupOpenPhotoZoom.src = this._link
-
     return this._element
   }
 
