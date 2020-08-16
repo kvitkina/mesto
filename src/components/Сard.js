@@ -2,7 +2,6 @@ export class Card {
   constructor({data, handleCardClick}, elementsTemplate) {
     this._link = data.link
     this._name = data.name
-    this._alt = data.alt
     this._elementsTemplate = elementsTemplate
     this._handleCardClick = handleCardClick
   }
@@ -19,7 +18,7 @@ export class Card {
     const popupOpenPhotoZoom = this._element.querySelector('.element__image')
     this._element.querySelector('.element__title').textContent = this._name
 
-    popupOpenPhotoZoom.alt = this._alt
+    popupOpenPhotoZoom.alt = this._name
     popupOpenPhotoZoom.src = this._link
 
     return this._element
