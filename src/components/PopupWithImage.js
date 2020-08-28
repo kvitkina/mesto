@@ -15,6 +15,5 @@ export class PopupWithImage extends Popup {
     this._popupName.textContent = place
     this._popupImage.alt = place
     super.open()
-
   }
 }

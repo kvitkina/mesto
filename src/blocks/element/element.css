@@ -4,7 +4,7 @@
 @import url('./__info/element__info.css');
 @import url('./__trash/element__trash.css');
 @import url('./__like/_theme_black/element__like_theme_black.css');
-
+@import url('./__like-counter/element__like-counter.css');
 
 .element {
  max-width: 282px;
