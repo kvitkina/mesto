@@ -66,9 +66,19 @@ api.getAllInfo()
       handleCardClick: () => {
         popupWithImage.open(data)
       },
-      handleLikeClick: (card) => {
-        const like = card.querySelector('.element__like')
-        like.classList.toggle('element__like_theme_black')
+      handleLikeClick: (id) => {
+        api.putLike (id)
+        .then (res => {
+          card.updateLikes(res.likes)
+        })
+        .catch((err) => { console.log(err) })
+      },
+      handleDislikeClick: (id) => {
+        api.removeLike (id)
+        .then(res => {
+          card.updateLikes(res.likes)
+        })
+        .catch((err) => { console.log(err) })
       },
       handleDeleteIconClick: (id) => {
         popupDeleteCard.setSubmitAction (() => {
@@ -102,9 +112,19 @@ api.getAllInfo()
         handleCardClick: () => {
           popupWithImage.open(data)
         },
-        handleLikeClick: (card) => {
-          const like = card.querySelector('.element__like')
-          like.classList.toggle('element__like_theme_black')
+        handleLikeClick: (id) => {
+          api.putLike (id)
+          .then (res => {
+            card.updateLikes(res.likes)
+          })
+          .catch((err) => { console.log(err) })
+        },
+        handleDislikeClick: (id) => {
+          api.removeLike (id)
+          .then(res => {
+            card.updateLikes(res.likes)
+          })
+          .catch((err) => { console.log(err) })
         },
         handleDeleteIconClick: (id) => {
           popupDeleteCard.setSubmitAction (() => {
@@ -137,6 +157,7 @@ const editProfile = new PopupWithForm ('.popup_edit-profile', {
     .then(res => {
       userInfo.setUserInfo(res)
     })
+    .catch((err) => { console.log(err) })
     editProfile.close()
     preloader(false, SibmitButtonProfile)
   }
@@ -152,6 +173,7 @@ const popupNewAvatar = new PopupWithForm ('.popup_new-avatar', {
     .then(res => {
       userInfo.setUserInfo(res)
     })
+    .catch((err) => { console.log(err) })
     popupNewAvatar.close()
     preloader(false, SibmitButtonAvatar)
   }

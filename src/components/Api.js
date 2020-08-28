@@ -103,7 +103,7 @@ export class Api {
   }
 
   putLike (id) {
-    return fetch (`https://mesto.nomoreparties.co/v1/cohortId/cards/likes/${id}`, {
+    return fetch (`https://mesto.nomoreparties.co/v1/cohort-14/cards/likes/${id}`, {
       method: "PUT",
       headers: {
         authorization: 'e63db112-531a-4c6f-ae02-ccc048d1696b',
@@ -119,7 +119,7 @@ export class Api {
   }
 
   removeLike (id) {
-    return fetch (`https://mesto.nomoreparties.co/v1/cohortId/cards/likes/${id}`, {
+    return fetch (`https://mesto.nomoreparties.co/v1/cohort-14/cards/likes/${id}`, {
       method: 'DELETE',
       headers: {
         authorization: 'e63db112-531a-4c6f-ae02-ccc048d1696b',
