@@ -41,8 +41,6 @@ const api = new Api ({
 //создание экземпляра класса для попапа "зум фото"
 const popupWithImage = new PopupWithImage ('.popup_photo-zoom', {popupImage, popupName})
 popupWithImage.setEventListeners()
-popupWithImage.close()
-
 
 
 api.getAllInfo()
@@ -58,10 +56,8 @@ api.getAllInfo()
   //создание экмепляра класса для попапа "подтвердить удаление"
   const popupDeleteCard = new PopupWithSubmit ('.popup_delete', '.popup__form-container')
 
-  //создание экземпляра класса для отрисовки карточек на странице
-  const cardList = new Section ({
-    items: dataCards,
-    renderer: (data) => {
+  //создание карточки
+  const createCardFunction = (data) => {
     const card = new Card({data, dataUser: dataProfile._id,
       handleCardClick: () => {
         popupWithImage.open(data)
@@ -92,10 +88,16 @@ api.getAllInfo()
         popupDeleteCard.open()
       }
     }, '.elements__template')
-
     const element = card.generateCard()
     cardList.addItem(element)
-    }
+  }
+
+  //создание экземпляра класса для отрисовки карточек на странице
+  const cardList = new Section ({
+    items: dataCards,
+    renderer: (data => {
+    createCardFunction(data)
+    })
   }, elementsList)
 
 
@@ -108,38 +110,7 @@ api.getAllInfo()
         link: data.link
       })
       .then(data => {
-      const card = new Card({data, dataUser: dataProfile._id,
-        handleCardClick: () => {
-          popupWithImage.open(data)
-        },
-        handleLikeClick: (id) => {
-          api.putLike (id)
-          .then (res => {
-            card.updateLikes(res.likes)
-          })
-          .catch((err) => { console.log(err) })
-        },
-        handleDislikeClick: (id) => {
-          api.removeLike (id)
-          .then(res => {
-            card.updateLikes(res.likes)
-          })
-          .catch((err) => { console.log(err) })
-        },
-        handleDeleteIconClick: (id) => {
-          popupDeleteCard.setSubmitAction (() => {
-            api.deleteCard(id)
-            .then(res => {
-              card.removeElement()
-              popupDeleteCard.close()
-            })
-            .catch((err) => { console.log(err) })
-          })
-          popupDeleteCard.open()
-        }
-      }, '.elements__template')
-      const element = card.generateCard()
-      cardList.addItem(element)
+      createCardFunction(data)
       preloader(false, SibmitButtonPlace)
       newPlace.close()
       })
@@ -156,9 +127,9 @@ const editProfile = new PopupWithForm ('.popup_edit-profile', {
     })
     .then(res => {
       userInfo.setUserInfo(res)
+      editProfile.close()
     })
     .catch((err) => { console.log(err) })
-    editProfile.close()
     preloader(false, SibmitButtonProfile)
   }
 })
@@ -172,9 +143,9 @@ const popupNewAvatar = new PopupWithForm ('.popup_new-avatar', {
     })
     .then(res => {
       userInfo.setUserInfo(res)
+      popupNewAvatar.close()
     })
     .catch((err) => { console.log(err) })
-    popupNewAvatar.close()
     preloader(false, SibmitButtonAvatar)
   }
 })
@@ -222,5 +193,4 @@ return {
     newPlace.open()
     })
 })
-
 .catch((err) => { console.log(err) })
