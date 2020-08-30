@@ -60,13 +60,9 @@ export class Card {
   }
 
   _isLiked() {
-// const userIdOnly = this._likes.map ((user) => {
-//   return user._id
-// })
     return this._likes.some ((like) => {
       return this._userId === like._id
     })
-
   }
 
   _setEventListeners () {
