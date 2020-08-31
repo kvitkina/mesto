@@ -36,4 +36,4 @@
 ### Сборка проекта настроена с помощью Webpack
 ### Проект подключен к серверу
 
-Проект выложен на GitHab Pages. Вот ссылка https://kvitkina.github.io/mesto/index.html (временно не работает)
+Проект выложен на GitHab Pages. Вот ссылка https://kvitkina.github.io/mesto/index.html
